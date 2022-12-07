@@ -10,7 +10,7 @@ LUCI_DEPENDS:=+zlib +libpthread +librt +libreadline +libncurses +libiconv-full +
 LUCI_PKGARCH:=all
 PKG_RELEASE:=$(COMMITCOUNT)
 
-include ../../luci.mk
+include $(TOPDIR)/feeds/luci/luci.mk
 
 # call BuildPackage - OpenWrt buildroot signature
 
