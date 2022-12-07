@@ -49,6 +49,11 @@ wifi up
 chmod 755 /etc/init.d/*
 [ -f '/etc/openwrt_banner' ] && mv '/etc/openwrt_banner' '/etc/banner'
 
+if [ $(ifconfig | grep -E "(eth|ens)" | wc -l) -eq 1 ] ; then
+uci set dhcp.lan.ignore='1'
+uci commit dhcp
+fi
+
 sed -i '/DISTRIB_REVISION/d' /etc/openwrt_release
 echo "DISTRIB_REVISION='R22.12.1'" >> /etc/openwrt_release
 sed -i '/DISTRIB_DESCRIPTION/d' /etc/openwrt_release
