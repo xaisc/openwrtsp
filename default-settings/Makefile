@@ -32,6 +32,8 @@ endef
 define Package/default-settings/install
 	$(INSTALL_DIR) $(1)/etc/uci-defaults
 	$(INSTALL_BIN) ./files/zzz-default-settings $(1)/etc/uci-defaults/99-default-settings
+  $(INSTALL_DIR) $(1)/etc
+	$(INSTALL_DATA) ./files/openwrt_banner $(1)/etc/openwrt_banner
 	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/i18n
 	po2lmo ./po/zh-cn/default.po $(1)/usr/lib/lua/luci/i18n/default.zh-cn.lmo
 endef
